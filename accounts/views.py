@@ -11,7 +11,7 @@ from .filters import OrderFilter
 
 
 def registerPage(request):
-    if request.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('home')
     else:
         form = CreateUserForm()
@@ -30,7 +30,7 @@ def registerPage(request):
         return render(request, 'accounts/register.html', context)
 
 def loginPage(request):
-    if request.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('home')
     else:
         if request.method == 'POST':
