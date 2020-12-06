@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.deletion import SET_NULL
 
 class Customer(models.Model):
     name = models.CharField(max_length=200, null=True)
@@ -24,7 +23,7 @@ class Product(models.Model):
     )
 
     name = models.CharField(max_length=200, null=True)
-    price = models.FloatField(null=True)
+    price = models.FloatField(null=True, blank=True, default=0.0)
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
     description = models.CharField(max_length=200, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
@@ -41,8 +40,8 @@ class Order(models.Model):
         ('Delivered', 'Delivered'),
     )
 
-    customer = models.ForeignKey(Customer, null=True, on_delete=SET_NULL)
-    product = models.ForeignKey(Product, null=True, on_delete=SET_NULL)
+    customer = models.ForeignKey(Customer, null=True, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     note = models.CharField(max_length=200, null=True)
