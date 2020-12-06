@@ -23,7 +23,7 @@ class Product(models.Model):
         ('Outdoor', 'Outdoor'),
     )
     name = models.CharField(max_length=200, null=True)
-    price = models.DecimalField(decimal_places=2, max_digits=5)
+    price = models.FloatField(null=True)
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
     description = models.CharField(max_length=200, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
