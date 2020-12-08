@@ -83,9 +83,8 @@ DATABASES = {
         'NAME': 'db_crm',
         'USER': 'root',
         'PASSWORD': 'Hf*89$13@des',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '3306',
-        'OPTIONS': {'isolation_level': None}
     }
 }
 
